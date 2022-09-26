@@ -1,0 +1,14 @@
+type (
+	Request {
+		Name string `path:"name,options=you|me"`
+	}
+
+	Response {
+		Message string `json:"message"`
+	}
+)
+
+service health-check-api {
+	@handler HealthCheckHandler
+	get /api/v1/healthCheck/:name(Request) returns (Response)
+}
